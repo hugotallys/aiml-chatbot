@@ -1,0 +1,34 @@
+<aiml version="1.0.1" encoding="UTF-8">
+
+    <category>
+        <pattern>*</pattern>
+        <template>Desculpe, não tenho certeza sobre isso. Você poderia ser mais específico?</template>
+    </category>
+
+    <category>
+        <pattern>PACOTE TURISTICO</pattern>
+        <template>Entendido. Para começar a planejar seu pacote turístico vou precisar do seu nome.</template>
+    </category>
+
+    <category>
+        <pattern>* PACOTE TURISTICO *</pattern>
+        <template>
+            <srai>PACOTE TURISTICO</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>PACOTE TURISTICO *</pattern>
+        <template>
+            <srai>PACOTE TURISTICO</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>* PACOTE TURISTICO</pattern>
+        <template>
+            <srai>PACOTE TURISTICO</srai>
+        </template>
+    </category>
+
+</aiml>
