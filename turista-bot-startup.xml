@@ -11,7 +11,7 @@
         <!-- Template is the response to the pattern -->
         <!-- This learn an aiml file -->
         <template>
-            <learn>turista_bot_chat.xml</learn>
+            <learn>turista-bot-chat.xml</learn>
             <!-- You can add more aiml files here -->
             <!--<learn>more_aiml.aiml</learn>-->
         </template>
