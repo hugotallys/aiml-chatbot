@@ -1,13 +1,20 @@
 <aiml version="1.0.1" encoding="UTF-8">
 
     <category>
-        <pattern>*</pattern>
+        <pattern>UNSURE</pattern>
         <template>Desculpe, não tenho certeza sobre isso. Você poderia ser mais específico?</template>
     </category>
 
     <category>
+        <pattern>*</pattern>
+        <template><srai>UNSURE</srai></template>
+    </category>
+
+    <category>
         <pattern>PACOTE TURISTICO</pattern>
-        <template>Entendido. Para começar a planejar seu pacote turístico vou precisar do seu nome.</template>
+        <template>
+            Posso te ajudar a adquirir um dos nossos pacotes turisticos. Os destinos disponiveis sao Maceio, Aracaju ou Fortaleza. Qual cidade voce tem interesse?
+        </template>
     </category>
 
     <category>
@@ -28,6 +35,34 @@
         <pattern>* PACOTE TURISTICO</pattern>
         <template>
             <srai>PACOTE TURISTICO</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>*</pattern>
+        <that>POSSO TE AJUDAR A ADQUIRIR UM DOS NOSSOS PACOTES TURISTICOS OS DESTINOS DISPONIVEIS SAO MACEIO ARACAJU OU FORTALEZA QUAL CIDADE VOCE TEM INTERESSE</that>
+        <template>
+            <think><set name="destination"><star/></set></think>
+            <condition name="destination">
+                <li value="MACEIO">Boa escolha! Maceió é um ótimo destino para curtir sua viagem.</li>
+                <li value="ARACAJU">Boa escolha! Aracaju é um ótimo destino para curtir sua viagem.</li>
+                <li value="FORTALEZA">Boa escolha! Fortaleza é um ótimo destino para curtir sua viagem.</li>
+                <li>Desculpe, nao entendi o nome da cidade.</li>
+            </condition>
+        </template>
+    </category>
+
+    <category>
+        <pattern>*</pattern>
+        <that>DESCULPE NAO ENTENDI O NOME DA CIDADE</that>
+        <template>
+            <think><set name="destination"><star/></set></think>
+            <condition name="destination">
+                <li value="MACEIO">Boa escolha! Maceió é um ótimo destino para curtir sua viagem.</li>
+                <li value="ARACAJU">Boa escolha! Aracaju é um ótimo destino para curtir sua viagem.</li>
+                <li value="FORTALEZA">Boa escolha! Fortaleza é um ótimo destino para curtir sua viagem.</li>
+                <li>Desculpe, nao entendi o nome da cidade.</li>
+            </condition>
         </template>
     </category>
 

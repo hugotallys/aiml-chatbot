@@ -10,7 +10,7 @@ app.static_folder = "static"
 
 def clean_input(text):
     text = unidecode(text)
-    return text.translate(str.maketrans("", "", string.punctuation))
+    return text.translate(str.maketrans("", "", string.punctuation)).upper()
 
 @app.route("/")
 def home():
