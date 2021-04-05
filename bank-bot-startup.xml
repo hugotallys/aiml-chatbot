@@ -6,12 +6,12 @@
     
         <!-- Pattern to match in user input -->
         <!-- If user enters "LOAD AIML B" -->
-        <pattern>LOAD TURISTA BOT</pattern>
+        <pattern>LOAD BANK BOT</pattern>
 
         <!-- Template is the response to the pattern -->
         <!-- This learn an aiml file -->
         <template>
-            <learn>turista-bot-chat.xml</learn>
+            <learn>bank-bot-chat.xml</learn>
             <!-- You can add more aiml files here -->
             <!--<learn>more_aiml.aiml</learn>-->
         </template>

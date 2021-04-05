@@ -41,12 +41,12 @@ if __name__ == "__main__":
     kernel = aiml.Kernel()
 
     load_brain = False
-    brain_file = "brains/turista_bot_brain.brn"
+    brain_file = "brains/bank_bot_brain.brn"
 
     if os.path.exists(brain_file) and load_brain:
         kernel.bootstrap(brainFile=brain_file)
     else:
-        kernel.bootstrap(learnFiles="turista-bot-startup.xml", commands="load turista bot")
+        kernel.bootstrap(learnFiles="bank-bot-startup.xml", commands="load bank bot")
         kernel.saveBrain(brain_file)
     
     app.run()
