@@ -20,3 +20,7 @@ Simple chatbot made with flask and aiml.
     * Verifique se ele irá de ônibus ou de avião para o Ceará.
 * Verifique a forma de pagamento cartão ou débito em todas as opções.
 * Ao final, informe as opções escolhidas com uma mensagem informando que o pedido está sendo processado.
+
+---
+
+[repositorio coronabot](https://github.com/huzaifsayed/coronabot-chatterbot)
