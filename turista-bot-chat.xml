@@ -11,57 +11,107 @@
     </category>
 
     <category>
-        <pattern>PACOTE TURISTICO</pattern>
+        <pattern>CONTA CORRENTE</pattern>
         <template>
-            Posso te ajudar a adquirir um dos nossos pacotes turisticos. Os destinos disponiveis sao Maceio, Aracaju ou Fortaleza. Qual cidade voce tem interesse?
+            Posso te ajudar a abrir uma conta corrente no nosso banco. Eh esse seu problema?
         </template>
     </category>
 
     <category>
-        <pattern>* PACOTE TURISTICO *</pattern>
+        <pattern>* CONTA CORRENTE*</pattern>
         <template>
-            <srai>PACOTE TURISTICO</srai>
+            <srai>CONTA CORRENTE</srai>
         </template>
     </category>
 
     <category>
-        <pattern>PACOTE TURISTICO *</pattern>
+        <pattern>CONTA CORRENTE *</pattern>
         <template>
-            <srai>PACOTE TURISTICO</srai>
+            <srai>CONTA CORRENTE</srai>
         </template>
     </category>
 
     <category>
-        <pattern>* PACOTE TURISTICO</pattern>
+        <pattern>* CONTA CORRENTE</pattern>
         <template>
-            <srai>PACOTE TURISTICO</srai>
+            <srai>CONTA CORRENTE</srai>
         </template>
     </category>
 
     <category>
         <pattern>*</pattern>
-        <that>POSSO TE AJUDAR A ADQUIRIR UM DOS NOSSOS PACOTES TURISTICOS OS DESTINOS DISPONIVEIS SAO MACEIO ARACAJU OU FORTALEZA QUAL CIDADE VOCE TEM INTERESSE</that>
+        <that>POSSO TE AJUDAR A ABRIR UMA CONTA CORRENTE NO NOSSO BANCO EH ESSE SEU PROBLEMA</that>
         <template>
-            <think><set name="destination"><star/></set></think>
-            <condition name="destination">
-                <li value="MACEIO">Boa escolha! Maceió é um ótimo destino para curtir sua viagem.</li>
-                <li value="ARACAJU">Boa escolha! Aracaju é um ótimo destino para curtir sua viagem.</li>
-                <li value="FORTALEZA">Boa escolha! Fortaleza é um ótimo destino para curtir sua viagem.</li>
-                <li>Desculpe, nao entendi o nome da cidade.</li>
+            <think><set name="account"><star/></set></think>
+            <condition name="account">
+                <li value="SIM">Otimo! Ja me apresentei agora eh sua vez. Com que eu falo (digite somente nome por favor)?</li>
+                <li value="NAO">Desculpe, nao vou poder te ajudar. Entre em contato conosco pelos canais oficiais</li>
+                <li><srai>UNSURE</srai></li>
             </condition>
         </template>
     </category>
 
     <category>
         <pattern>*</pattern>
-        <that>DESCULPE NAO ENTENDI O NOME DA CIDADE</that>
+        <that>OTIMO JA ME APRESENTEI AGORA EH SUA VEZ COM QUE EU FALO DIGITE SOMENTE NOME POR FAVOR</that>
         <template>
-            <think><set name="destination"><star/></set></think>
-            <condition name="destination">
-                <li value="MACEIO">Boa escolha! Maceió é um ótimo destino para curtir sua viagem.</li>
-                <li value="ARACAJU">Boa escolha! Aracaju é um ótimo destino para curtir sua viagem.</li>
-                <li value="FORTALEZA">Boa escolha! Fortaleza é um ótimo destino para curtir sua viagem.</li>
-                <li>Desculpe, nao entendi o nome da cidade.</li>
+            <think><set name="clientName"><star/></set></think>
+            Ola <get name="clientName"></get>, estamos feliz que voce tenha nos escolhido. Voce ja tem conta em outras instituicoes?
+        </template>
+    </category>
+
+    <category>
+        <pattern>*</pattern>
+        <that>OLA * ESTAMOS FELIZ QUE VOCE TENHA NOS ESCOLHIDO VOCE JA TEM CONTA EM OUTRAS INSTITUICOES</that>
+        <template>
+            <think><set name="hasAccount"><star/></set></think>
+            <condition name="hasAccount">
+                <li value="SIM">Tudo bem, nesse caso precisamos saber se voce deseja realizar portabilidade.</li>
+                <li value="NAO">Otimo. Qual saldo inicial sera depositado em conta?</li>
+                <li><srai>UNSURE</srai>></li>
+            </condition>
+        </template>
+    </category>
+
+    <category>
+        <pattern>*</pattern>
+        <that>TUDO BEM NESSE CASO PRECISAMOS SABER SE VOCE DESEJA REALIZAR PORTABILIDADE</that>
+        <template>
+            <think><set name="portability"><star/></set></think>
+            <condition name="portability">
+                <li value="SIM">Infelizmente nao vou poder te ajudar aqui. Para realizar abertura de conta com portabilidade entre em contato atraves dos nossos canais oficiais.</li>
+                <li value="NAO">Otimo. Qual saldo inicial sera depositado em conta?</li>
+                <li><srai>UNSURE</srai>></li>
+            </condition>
+        </template>
+    </category>
+
+    <category>
+        <pattern>*</pattern>
+        <that>OTIMO QUAL SALDO INICIAL SERA DEPOSITADO EM CONTA</that>
+        <template>
+            Certo. Seu saldo incial será R$<star/>. Informe seu email.
+        </template>
+    </category>
+
+    <category>
+        <pattern>*</pattern>
+        <that>CERTO SEU SALDO INCIAL SERÁ * INFORME SEU EMAIL</that>
+        <template>
+            <think><set name="email"><star/></set></think>
+            Quase finalizando. Gostaria de fazer um emprestimo ?
+        </template>
+    </category>
+
+    <category>
+        <pattern>*</pattern>
+        <that>QUASE FINALIZANDO GOSTARIA DE FAZER UM EMPRESTIMO</that>        
+        <template>
+            <think><set name="loan"><star/></set></think>
+            <condition name="loan">
+                <li value="SIM">Enviamos as credenciais da conta para <get name="email"></get> com informacoes de solicatacao do emprestimo. Agradeco pela sua atencao!</li>
+                <li value="NAO">Enviamos as credenciais da conta para <get name="email"></get>. Agradeco pela sua atencao!</li>
+                <li><srai>UNSURE</srai>></li>
             </condition>
         </template>
     </category>
