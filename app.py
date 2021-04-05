@@ -1,4 +1,5 @@
 import os
+import re
 import aiml
 import string
 
@@ -10,7 +11,13 @@ app.static_folder = "static"
 
 def clean_input(text):
     text = unidecode(text)
-    return text.translate(str.maketrans("", "", string.punctuation)).upper()
+    return text.translate(str.maketrans("", "", string.punctuation)).upper().strip(" ")
+
+def validate_monetary(text):
+    return re.match(r"^[1-9]\d{0,2}(\.\d{3})*,\d{2}$", text) is not None
+
+def validate_email(text):
+    return re.search(r"^(\w|\.|\_|\-)+[@](\w|\_|\-|\.)+[.]\w{2,3}$", text) is not None
 
 @app.route("/")
 def home():
@@ -18,7 +25,15 @@ def home():
 
 @app.route("/get")
 def get_bot_response():
-    userText = clean_input(request.args.get("msg"))
+    msg = request.args.get("msg")
+    
+    if validate_monetary(msg) or validate_email(msg):
+        userText = msg
+    else:
+        userText = clean_input(msg)
+
+    userText = userText.replace(".", "") # remove pontos
+
     return kernel.respond(userText)
 
 if __name__ == "__main__":
